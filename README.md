@@ -7,6 +7,7 @@ Navigation:
 3. $npx expo install react-native-screens react-native-safe-area-context
 4. $npm install @react-navigation/stack
 5. $npm install @react-navigation/bottom-tabs
+6. $npx expo install expo-sensors
 
 To run simulator: 
 1. $cd frontend
