@@ -8,10 +8,9 @@
   };
   /* Colors */
   export const Color = {
-    lightGrey: "#f3f7ff",
-    colorWhite: "#fff",
-    dark: "#333",
-    primary: "#0063a4",
+    blue: "#0063A4",
+    gray: '#F3F7FF',
+    white: '#FFFFFF',
   };
   /* border radiuses */
   export const Border = {

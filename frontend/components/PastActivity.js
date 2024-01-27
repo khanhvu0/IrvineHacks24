@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 export default function PastActivity({ pathName, date, distance, time }) {
   return (
     <View style={styles.container}>
+      
       <View style={styles.horizontal}>
         <View style={styles.activityImage}>
           <Text>Image</Text>
@@ -14,11 +15,13 @@ export default function PastActivity({ pathName, date, distance, time }) {
           <Text>701kcal 11.2km/hr</Text>
         </View>
         <TouchableOpacity>
-          <Text>
-            button
-          </Text>
+          <Text>button</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Draw a line at the bottom */}
+      <View style={styles.line} />
+
     </View>
   );
 }
@@ -26,9 +29,6 @@ export default function PastActivity({ pathName, date, distance, time }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: 'lightblue',
-    marginTop: 5,
-    marginBottom: 5,
     padding: 10,
     borderRadius: 10,
   },
@@ -43,6 +43,11 @@ const styles = StyleSheet.create({
   },
   activityInfo: {
     marginRight: 80,
-  }
-
+  },
+  line: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'gray',
+    width: '70%',
+    marginTop: 10, // Adjust the margin as needed
+  },
 });
