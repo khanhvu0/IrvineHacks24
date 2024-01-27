@@ -15,6 +15,7 @@
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		C8AB3DD5139047D7BF2C3E78 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12515FA5F23740CBBFC67302 /* noop-file.swift */; };
+		1ED00F8DF1E445AAAC5AC2B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE5CF6BBA0A14FCCA0DE43F4 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-frontend/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		12515FA5F23740CBBFC67302 /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "frontend/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
 		4717FE14AEF846E8A5252DEA /* frontend-Bridging-Header.h */ = {isa = PBXFileReference; name = "frontend-Bridging-Header.h"; path = "frontend/frontend-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		BE5CF6BBA0A14FCCA0DE43F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; name = "GoogleService-Info.plist"; path = "frontend/GoogleService-Info.plist"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.xml; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
 				12515FA5F23740CBBFC67302 /* noop-file.swift */,
 				4717FE14AEF846E8A5252DEA /* frontend-Bridging-Header.h */,
+				BE5CF6BBA0A14FCCA0DE43F4 /* GoogleService-Info.plist */,
 			);
 			name = frontend;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
 				4391BEBC647947D5A9C8CDF4 /* frontend-Bridging-Header.h in Resources */,
+				1ED00F8DF1E445AAAC5AC2B1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

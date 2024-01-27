@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "586022199719",
+    "project_id": "stride-af1ff",
+    "storage_bucket": "stride-af1ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586022199719:android:849e070da87e393d85d682",
+        "android_client_info": {
+          "package_name": "com.ucihackers.stride"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLlfAfy7gYh9cFRTuzbvLuEZomRNRiTy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
