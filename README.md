@@ -15,5 +15,4 @@ To run simulator:
 3. press "a" for android simulator OR "i" for IOS simulator OR scan QR Code using Expo Go App
 
 Firebase:
-npm expo prebuild
-bundle/package id: com.ucihackers.stride
+npm expo install firebase
