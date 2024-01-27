@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { StyleSheet, TouchableOpacity, View , Text} from 'react-native';
+//import Geolocation from "react-native-geolocation-service";
 //import { useNavigation } from 'expo-router';
 
 const INITIAL_REGION = {
@@ -11,6 +12,7 @@ const INITIAL_REGION = {
   };
 
 export default function Mapping() {
+ 
   //const mapRef = useRef();
   //const navigation = useNavigation();
   
@@ -36,10 +38,13 @@ export default function Mapping() {
   //     longitudeDelta: 0.1
   //   };
   // };
-  
+
+
+
   const onRegionChange = (region) => {
 		console.log(region);
 	};
+
 
   // mapRef.current?.animateToRegion(GreenBayStadium);
 
@@ -50,8 +55,12 @@ export default function Mapping() {
       region={INITIAL_REGION}
       showsUserLocation
       showsMyLocationButton 
+      //mapType='satellite'
+      loadingEnabled
+      //followsUserLocation={true}
       //ref={mapRef}
       onRegionChangeComplete={onRegionChange}
+      //onUserLocationChange={event => console.log(event.nativeEvent)}
       />
     </View>
   );
