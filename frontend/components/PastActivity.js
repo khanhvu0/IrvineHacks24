@@ -1,20 +1,23 @@
-/*import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default function PastActivity({ pathName, date, distance, time }) {
   return (
     <View style={styles.container}>
-      <View style={styles.box}>
-        <Text>{pathName}</Text>
-      </View>
-      <View style={styles.box}>
-        <Text>Date: {date}</Text>
-      </View>
-      <View style={styles.box}>
-        <Text>Distance: {distance} miles</Text>
-      </View>
-      <View style={styles.box}>
-        <Text>Time: {time} minutes</Text>
+      <View style={styles.horizontal}>
+        <View style={styles.activityImage}>
+          <Text>Image</Text>
+        </View>
+        <View style={styles.activityInfo}>
+          <Text>Date: november 19th</Text>
+          <Text>10.36km</Text>
+          <Text>701kcal 11.2km/hr</Text>
+        </View>
+        <TouchableOpacity>
+          <Text>
+            button
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -22,20 +25,24 @@ export default function PastActivity({ pathName, date, distance, time }) {
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: 'lightblue',
-    padding: 10,
     alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 10,
-  },
-  box: {
-    backgroundColor: 'white',
-    borderWidth: 1,
-    borderColor: 'lightblue',
-    padding: 10,
+    backgroundColor: 'lightblue',
+    marginTop: 5,
     marginBottom: 5,
+    padding: 10,
+    borderRadius: 10,
   },
+  horizontal: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: '100%',
+  },
+  activityImage: {
+    backgroundColor: 'white',
+  },
+  activityInfo: {
+    marginRight: 80,
+  }
+
 });
-*/
