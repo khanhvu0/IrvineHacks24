@@ -11,37 +11,37 @@ const INITIAL_REGION = {
   };
 
 export default function App() {
-  const mapRef = useRef();
+  //const mapRef = useRef();
   //const navigation = useNavigation();
   
   
-  useEffect(() => {
-		navigation.setOptions({
-			headerRight: () => (
-				<TouchableOpacity onPress={focusMap}>
-					<View style={{ padding: 10 }}>
-						<Text>Focus</Text>
-					</View>
-				</TouchableOpacity>
-			)
-		});
-	}, []);
+  // useEffect(() => {
+	// 	navigation.setOptions({
+	// 		headerRight: () => (
+	// 			<TouchableOpacity onPress={focusMap}>
+	// 				<View style={{ padding: 10 }}>
+	// 					<Text>Focus</Text>
+	// 				</View>
+	// 			</TouchableOpacity>
+	// 		)
+	// 	});
+	// }, []);
 
 
-  const focusMap = () => {		
-    const GreenBayStadium = {
-      latitude: 44.5013,
-      longitude: -88.0622,
-      latitudeDelta: 0.1,
-      longitudeDelta: 0.1
-    };
-  };
+  // const focusMap = () => {		
+  //   const GreenBayStadium = {
+  //     latitude: 44.5013,
+  //     longitude: -88.0622,
+  //     latitudeDelta: 0.1,
+  //     longitudeDelta: 0.1
+  //   };
+  // };
   
   const onRegionChange = (region) => {
 		console.log(region);
 	};
 
-  mapRef.current?.animateToRegion(GreenBayStadium);
+  // mapRef.current?.animateToRegion(GreenBayStadium);
 
   return (
     <View style={{flex: 1}}>
@@ -50,7 +50,7 @@ export default function App() {
       region={INITIAL_REGION}
       showsUserLocation
       showsMyLocationButton 
-      ref={mapRef}
+      //ref={mapRef}
       onRegionChangeComplete={onRegionChange}
       />
     </View>
