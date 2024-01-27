@@ -25,7 +25,8 @@ export default function Profile() {
     if (isAvailable) {
       const end = new Date();
       const start = new Date();
-      start.setDate(end.getDate() - 1);
+      start.setHours(0, 0, 0)
+      // start.setDate(end.getDate() - 1);
 
 
       const pastStepCountResult = await Pedometer.getStepCountAsync(start, end);
