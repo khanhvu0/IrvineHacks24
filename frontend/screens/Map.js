@@ -1,10 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import Mapping from '../map/index' 
 
 export default function Map({ navigation }) {
   return (
+    
     <View style={styles.bottomBox}>
-
+      <View>
+          <Text>
+            Start of Map
+          </Text>
+          <Mapping>
+          </Mapping>
+          <Text>
+            end of map
+          </Text>
+      </View>
       <View style={styles.horizontal}>
             <View>
                 <Text style={styles.additionalText}>Running Time</Text>

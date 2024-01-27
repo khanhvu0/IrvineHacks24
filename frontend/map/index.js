@@ -10,7 +10,7 @@ const INITIAL_REGION = {
     longitudeDelta: 0.0421,
   };
 
-export default function App() {
+export default function Mapping() {
   //const mapRef = useRef();
   //const navigation = useNavigation();
   
