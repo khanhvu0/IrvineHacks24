@@ -83,7 +83,7 @@ export default function Home() {
           </View>
           <TouchableOpacity>
             <Image
-              source={require('../images/profilepic.jpeg')}
+              source={require('../images/leaderboard/person4.jpg')}
               style={styles.profileImage}
             />
           </TouchableOpacity>

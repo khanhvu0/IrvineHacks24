@@ -159,6 +159,7 @@ const styles = StyleSheet.create({
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Color } from '../GlobalStyles';
+
 export default function LeaderboardComp({ filepath, number, name, points }) {
   return (
     <View>
@@ -219,10 +220,8 @@ export default function LeaderboardComp({ filepath, number, name, points }) {
                   source={filepath}
                   style={styles.profileImageBoard}
                 /> 
+                 <Text style={styles.nameText}>{name}</Text>
             </View>
-
-            <Text style={styles.nameText}>
-              {name}</Text>
 
             <Text style={styles.pointsText}>{points} points</Text>
 
@@ -255,11 +254,11 @@ export default function LeaderboardComp({ filepath, number, name, points }) {
       transform: [{ translateY: 30 }],
     },
     two: {
-      left: '-60%',
+      left: '-30%',
       alignItems: 'center',
     },
     three: {
-      left: '60%',
+      left: '30%',
       alignItems: 'center',
     },
     horizontal: {
@@ -279,14 +278,15 @@ export default function LeaderboardComp({ filepath, number, name, points }) {
     },
     nameText: {
       fontSize: 15,
-      fontWeight: '300',
+      fontWeight: 400,
+      marginLeft: 15,
     },
     pointsText: {
       fontSize: 15,
       fontWeight: '600',
     },
     numberCircle: {
-      backgroundColor: Color.blue,
+      backgroundColor: Color.gray,
       width: 30,
       height: 30,
       borderRadius: 15,
@@ -300,31 +300,31 @@ export default function LeaderboardComp({ filepath, number, name, points }) {
       transform: [{ translateY: 3 }],
     },
     nameTextTop: {
-      fontSize: 20,
-      fontWeight: '800',
-      color: 'black',
+      fontSize: 15,
+      fontWeight: 400,
+      color: 'white',
       transform: [{ translateY: -10 }],
     },
     pointsTextTop: {
       marginTop: 3,
-      fontSize: 12,
-      fontWeight: '400',
-      color: 'black',
+      fontSize: 15,
+      fontWeight: '800',
+      color: 'white',
       transform: [{ translateY: -10 }],
     },
     profileImage: {
-      width: 60, // Set your desired width
-      height: 60, // Set your desired height
-      borderRadius: 30, // Half of the width and height to make it a circle
-      borderWidth: 3,
-      borderColor: Color.blue,
+      width: 90, // Set your desired width
+      height: 90, // Set your desired height
+      borderRadius: 45, // Half of the width and height to make it a circle
+      //borderWidth: 2,
+      //borderColor: Color.gray,
     },
     profileImageBoard: {
       width: 40, // Set your desired width
       height: 40, // Set your desired height
       borderRadius: 20, // Half of the width and height to make it a circle
-      borderWidth: 3,
-      borderColor: Color.blue,
+      //borderWidth: 2,
+      //borderColor: Color.blue,
       //transform: [{ translateY: 10 }],
     },
   });

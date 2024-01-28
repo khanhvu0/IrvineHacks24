@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, TouchableOpacity, Image, StyleSheet, Text, View } from 'react-native';
 import { Pedometer } from 'expo-sensors';
 
 import { ref, set, update } from 'firebase/database';
@@ -10,6 +10,12 @@ import { FIREBASE_AUTH, FIREBASE_DB } from '../FirebaseConfig';
 import LeaderboardComp from '../components/LeaderboardComp';
 import { isAvailableAsync } from 'expo-sensors/build/Pedometer';
 
+import ProfileOptions from '../components/ProfileOptions';
+import {Color} from '../GlobalStyles';
+const hand = require('../images/hand.png');
+const trophy = require('../images/trophy.png');
+const gear = require('../images/gear.png');
+const contact = require('../images/contact.png');
 
 export default function Profile() {
   const [isPedometerAvailable, setIsPedometerAvailable] = useState('checking');
@@ -142,7 +148,7 @@ export default function Profile() {
     return () => {
       // Unsubscribe from the Pedometer subscription when the component is unmounted
       if (subscription) {
-        subscription.remove();
+        //subscription.remove();
       }
     };
   }, []);
@@ -164,7 +170,7 @@ export default function Profile() {
 //   );
 // };
 
-
+/*
   return (
     <View style={styles.container}>
       <Text>Profile Page</Text>
@@ -181,14 +187,234 @@ export default function Profile() {
       <Text>Walk! And watch this go up: {currentStepCount}</Text>
     </View>
   );
-}
+}*/
 
+return(
+  <ScrollView>
+    <View style={styles.container}>
+      <View style={styles.bluebox}>
+        <View style={styles.hello}>
+          <View>
+            <Text style={styles.profile}>Profile </Text>
+            <Image
+              source={require('../images/leaderboard/person4.jpg')}
+              style={styles.profileImage}
+            />
+            <Text style={styles.Name}>Max</Text>
+            <Text style={styles.beginner}>Intermediate</Text>
+          </View>
+        </View>
+        <View style={styles.whitebox}>
+          <View style={styles.whiteboxrow1}>
+            <Text style={styles.totalProgress}>Total Progress</Text>
+            <TouchableOpacity>
+              <Text style={styles.button}>></Text>
+            </TouchableOpacity>
+          </View>
+            <View style={styles.innerbox}>
+              <View style={styles.progressTab}>
+              <Image
+              source={require('../images/runningMan.jpeg')}
+              style={styles.image}
+            />
+                <View style={styles.item}>
+                  <Text style={styles.itemNum}>375.4</Text>
+                  <Text style={styles.itemText}>km</Text>
+                </View>
+              </View>
+
+              <View style={styles.line} />
+
+              <View style={styles.progressTab}>
+                <Image
+                source={require('../images/clock.jpeg')}
+                style={styles.image}
+              />
+                <View style={styles.item}>
+                  <Text style={styles.itemNum}>65.8</Text>
+                  <Text style={styles.itemText}>hr</Text>
+                </View>
+              </View>
+
+              <View style={styles.line} />
+
+              <View style={styles.progressTab}>
+                <Image
+                  source={require('../images/calories.jpeg')}
+                  style={styles.image}
+                />
+                <View style={styles.item}>
+                  <Text style={styles.itemNum}>65.3k</Text>
+                  <Text style={styles.itemText}>kcal</Text>
+                </View>
+              </View>
+          
+          </View>
+        </View>
+
+      </View>
+
+
+      <View style={styles.profileOptionsStyle}>
+        <ProfileOptions filepath={hand} title='Personal' />
+        <ProfileOptions filepath={trophy} title='Achievements' />
+        <ProfileOptions filepath={gear} title='Settings' />
+        <ProfileOptions filepath={contact} title='Contact Us' />
+      </View>
+
+    </View>
+    </ScrollView>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
+    backgroundColor: Color.grey,
+  },
+    //bluebox==================================================
+  bluebox: {
+    alignItems: 'center',
+    backgroundColor: Color.blue,
+    width: '100%',
+    height: 300,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+  },
+  hello: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 60,
+  },
+  profile: {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: '600',
+    marginBottom: 5,
+    textAlign: 'center',
+  },
+  profileImage: {
+    width: 100, // Set your desired width
+    height: 100, // Set your desired height
+    borderRadius: 50, // Half of the width and height to make it a circle
+    marginBottom: 5,
+  },
+  Name: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  beginner: {
+    color: 'white',
+    fontSize: 12,
+    fontWeight: '500',
+    textAlign: 'center',
+  },
+  //whitebox==================================================
+  whitebox: {
+    backgroundColor: Color.gray,
+    width: '85%',
+    height: 150,
+    transform: [{ translateY: 80 }],
+    borderRadius: 20,
+    padding: 10,
+  },
+  whiteboxrow1: {
+    marginTop: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  totalProgress: {
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  button: {
+    color: 'gray',
+    fontSize: 11,
+    fontWeight: '400',
+  },
+  innerbox: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    backgroundColor: Color.white,
+    padding: 5,
+    borderRadius: 10,
+    marginTop: 10,
+    paddingVertical: 20,
+  },
+  item: {
+    marginRight: 15,
+    marginLeft: 8,
+  },
+  itemNum: {
+    textAlign: 'left',
+    fontWeight: '600',
+    fontSize: '20',
+  },
+  itemText: {
+    textAlign: 'right',
+    fontWeight: '300',
+    fontSize: 10,
+  },
+  line: {
+    borderLeftWidth: 1,
+    borderLeftColor: Color.blue,
+    width: '0%',
+    padding: 5,
+  },
+  progressTab:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  image:{
+    width: 30, // Set your desired width
+    height: 30, // Set your desired height
+    borderRadius: 15, // Half of the width and height to make it a circle
+  },
+    //profileOptions==================================================
+  profileOptionsStyle: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '90%',
+    height: 330,
+    borderRadius: 30,
+    padding: 10,
+    backgroundColor: Color.white,
+    transform: [{ translateY: 120 }],
+  },
+
+  currentInfo: {
+    color: 'white',
+    alignItems: 'center',
+  },
+  recent: {
+    flex: 1,
+    backgroundColor: Color.white,
+    borderRadius: 30,
+    width: '80%',
+  },
+  whiteText: {
+    color: 'white',
+  },
+  
+  currentRun: {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  currentRunDistance: {
+    color: 'white',
+    fontSize: 11,
+    fontWeight: '700',
+  },
+  currentRunCal: {
+    color: 'white',
+    fontSize: 11,
+    fontWeight: '300',
   },
 });
 

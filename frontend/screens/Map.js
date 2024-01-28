@@ -83,7 +83,7 @@ export default function Map() {
 
           <View style={styles.topright}>
           <TouchableOpacity onPress={() => setFollowing(!following)}>
-            <View style={styles.followButton}>
+            <View style={styles.button}>
               <Image source={require('../images/location.png')} style={styles.location}/>
             </View>
           </TouchableOpacity>
@@ -105,8 +105,8 @@ export default function Map() {
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => resetStopwatch()}>
-            <View style={styles.followButton}>
-              <Image source={require('../images/reset.png')} style={styles.location}/>
+            <View style={styles.button}>
+              <Image source={require('../images/reset.png')} style={styles.reset}/>
             </View>
           </TouchableOpacity>
           </View>
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   },
   bottomBox: {
     alignItems: 'center',
-    width: '55%',
+    width: 250,
     borderRadius: 15,
     padding: 10,
     backgroundColor: Color.white,
@@ -176,16 +176,13 @@ const styles = StyleSheet.create({
   },
   runTime: {
     marginRight: 50,
-    marginBottom: 15,
+    marginBottom: 12,
     fontSize: '15',
     fontWeight: '300',
   },
   timeText: {
     fontSize: '25',
     fontWeight: '800',
-  },
-  followButton: {
-    flexDirection: 'row',
   },
   button: {
     flexDirection: 'row',
@@ -215,6 +212,11 @@ const styles = StyleSheet.create({
   pause: {
     width: 35, // Set your desired width
     height: 35, // Set your desired height
+  },
+  reset: {
+    width: 35, // Set your desired width
+    height: 35, // Set your desired height
+    marginLeft: 5,
   },
   topright: {
     flexDirection: 'row',
