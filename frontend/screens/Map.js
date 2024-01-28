@@ -64,13 +64,17 @@ export default function Map() {
     setTime(0); 
     setRunning(false); 
     setStopwatchOn(false);
-}; 
+  }; 
   
+  const [distance, setDistance] = useState(0); // State to store the total distance
+  const handleDistanceChange = (newDistance) => {
+    setDistance(newDistance);
+  };
 
   return (
     <View style={styles.container1}>
       <View>
-        <Mapping followingState={following}/>
+        <Mapping followingState={following} onDistanceChange={handleDistanceChange}/>
         <Text style={styles.hidden}>------------------------------------------------------------</Text>
       </View>
       <View style={styles.container}>
@@ -115,17 +119,17 @@ export default function Map() {
 
         <View style={styles.innerbox}>
           <View style={styles.item}>
-            <Text style={styles.itemNum}>10.9</Text>
+            <Text style={styles.itemNum}>{distance.toFixed(2)}</Text>
             <Text style={styles.itemText}>km</Text>
           </View>
           <View style={styles.line} />
           <View style={styles.item}>
-            <Text style={styles.itemNum}>123</Text>
+            <Text style={styles.itemNum}>{distance.toFixed(1) * 60}</Text>
             <Text style={styles.itemText}>cal</Text>
           </View>
           <View style={styles.line} />
           <View style={styles.item}>
-            <Text style={styles.itemNum}>12.3</Text>
+            <Text style={styles.itemNum}>{Math.round(distance.toFixed(1) / (time * 3600))}</Text>
             <Text style={styles.itemText}>km/hr</Text>
           </View>
         </View>

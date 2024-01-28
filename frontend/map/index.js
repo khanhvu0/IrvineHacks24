@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, Modal, Animated, StyleSheet } from 'react-native';
 import MapView, { PROVIDER_DEFAULT, Marker, Polyline } from 'react-native-maps';
 import simplify from 'simplify-js';
@@ -48,9 +48,10 @@ const calculateDistanceFromMarker = (coord1, coord2) => {
   return Math.sqrt(latDiff * latDiff + lonDiff * lonDiff);
 };
 
-const Mapping = ({ followingState }) => {
+const Mapping = ({ followingState, onDistanceChange }) => {
   const mapRef = React.useRef(null);
   const [coordinates, setCoordinates] = React.useState([]);
+  const [totalDistance, setTotalDistance] = useState(0);
   const [bonusMarkers] = React.useState([
     { id: 1, name: 'Bonus Challenge - CDS', latitude: 33.644644, longitude: -117.824751 },
     { id: 2, name: 'Bonus Challenge - Student Center', latitude: 33.649585531243375, longitude: -117.84250114971816 },
@@ -59,14 +60,19 @@ const Mapping = ({ followingState }) => {
   ]);
 
   const [bonusClaimed, setBonusClaimed] = React.useState(false);
+  const bonusClaimedRef = useRef(bonusClaimed);
   const [modalVisible, setModalVisible] = React.useState(false);
   const translateY = new Animated.Value(0);
 
   useEffect(() => {
-    if (bonusClaimed && translateY._value !== 1) { // Check if bonusClaimed is true and translateY is not already 1
+    bonusClaimedRef.current = bonusClaimed; // Update ref value when bonusClaimed changes
+  }, [bonusClaimed]);
+
+  useEffect(() => {
+    if (bonusClaimed) { // Check if bonusClaimed is true and translateY is not already 1
       Animated.timing(translateY, {
         toValue: 1, 
-        duration: 500,
+        duration: 800,
         useNativeDriver: true,
       }).start();
     }
@@ -75,12 +81,13 @@ const Mapping = ({ followingState }) => {
   const handleLocationChange = (event) => {
     const newCoordinate = event.nativeEvent.coordinate;
 
-    setTimeout(() => {
-      const newPath = addCoordinateIfFarEnough(newCoordinate, coordinates, 0.00001);
+    const newPath = addCoordinateIfFarEnough(newCoordinate, coordinates, 0.00001);
+    const simplifiedCoordinates = simplify(newPath, 0.001, true);
+    setCoordinates(newPath);
 
-      const simplifiedCoordinates = simplify(newPath, 0.001, true);
-      setCoordinates(newPath);
-    }, 500);
+    const distanceFromStart = calculateDistanceFromStart(coordinates);
+    setTotalDistance(totalDistance + distanceFromStart);
+    onDistanceChange(totalDistance + distanceFromStart);
 
     handleBonusSteps(newCoordinate, bonusMarkers);
   };
@@ -92,8 +99,8 @@ const Mapping = ({ followingState }) => {
         longitude: marker.longitude,
       };
       const distance = calculateDistanceFromMarker(newCoordinate, markerCoordinate);
-  
-      if (distance <= 0.001 && !bonusClaimed) {
+      // console.log(bonusClaimed);
+      if (distance <= 0.001 && !bonusClaimedRef.current && !modalVisible) {
         try {
           const user = FIREBASE_AUTH.currentUser;
   
@@ -115,7 +122,7 @@ const Mapping = ({ followingState }) => {
   
               console.log(`Bonus steps updated in the database.`);
               setBonusClaimed(true);
-              setModalVisible(true);
+              if(!modalVisible){setModalVisible(true);}
             } else {
               console.error(`User data not found.`);
             }
