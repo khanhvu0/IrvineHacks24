@@ -18,7 +18,7 @@ export default function LeaderboardComp({ filepath, number, name, points }) {
             </View> 
             </View>
           <Text style={styles.nameTextTop}>{name}</Text>
-          <Text style={styles.pointsTextTop}>{points} Points</Text>
+          <Text style={styles.pointsTextTop}>{points} points</Text>
         </View>
       ) : number === 2 ? (
         /* number 2 */
@@ -32,7 +32,7 @@ export default function LeaderboardComp({ filepath, number, name, points }) {
               <Text style={styles.numberTextTop}>2</Text>
             </View> 
           <Text style={styles.nameTextTop}>{name}</Text>
-          <Text style={styles.pointsTextTop}>{points} Points</Text>
+          <Text style={styles.pointsTextTop}>{points} points</Text>
         </View>
     </View>
       ) : number === 3 ? (
@@ -47,28 +47,15 @@ export default function LeaderboardComp({ filepath, number, name, points }) {
               <Text style={styles.numberTextTop}>3</Text>
             </View> 
           <Text style={styles.nameTextTop}>{name}</Text>
-          <Text style={styles.pointsTextTop}>{points} Points</Text>
+          <Text style={styles.pointsTextTop}>{points} points</Text>
         </View>
     </View>
       ) : (
         /* after number 3 */
         <View style={styles.box}>
-          
-          <View style={styles.evenHoriz}>
-            <View style={styles.horizontal}>
-              <Text style={styles.numberText}>{number}  </Text>
-
-              <Image
-                  source={filepath}
-                  style={styles.profileImageBoard}
-                /> 
-            </View>
-
-            <Text style={styles.nameText}>
-              {name}</Text>
-              
+          <View style={styles.horizontal}>
+            <Text style={styles.nameText}><Text style={styles.numberText}>{number}. </Text> pic {name}</Text>
             <Text style={styles.pointsText}>{points} points</Text>
-
           </View>
 
         </View>

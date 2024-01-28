@@ -15,4 +15,6 @@ To run simulator:
 3. press "a" for android simulator OR "i" for IOS simulator OR scan QR Code using Expo Go App
 
 Firebase:
-npm expo install firebase
+npx expo install firebase
+
+npm install simplify-js

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import Mapping from '../map/index';
+ 
 import {useState} from 'react'
 import { Color } from '../GlobalStyles';
 
@@ -11,7 +12,7 @@ export default function Map() {
   return (
     <View style={styles.container1}>
       <View>
-        <Mapping followingState={following} />
+        <Mapping followingState={following}/>
         <Text style={styles.hidden}>------------------------------------------------------------</Text>
       </View>
       <View style={styles.container}>
@@ -44,8 +45,8 @@ export default function Map() {
           </View>
           <View style={styles.line} />
           <View style={styles.item}>
-            <Text style={styles.itemNum}>539</Text>
-            <Text style={styles.itemText}>kcal</Text>
+            <Text style={styles.itemNum}>123</Text>
+            <Text style={styles.itemText}>cal</Text>
           </View>
           <View style={styles.line} />
           <View style={styles.item}>
