@@ -9,7 +9,8 @@
   /* Colors */
   export const Color = {
     blue: "#0063A4",
-    gray: '#F3F7FF',
+    //gray: '#F3F7FF',
+    gray: '#E1E5ED',
     white: '#FFFFFF',
   };
   /* border radiuses */
