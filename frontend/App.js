@@ -29,10 +29,10 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Profile" component={Profile} />
-      <Tab.Screen name="Map" component={Map} />
       <Tab.Screen name="Leaderboard" component={Leaderboard} />
-      <Tab.Screen name="Test" component={Page} />
+      <Tab.Screen name="Map" component={Map} />
+      <Tab.Screen name="Profile" component={Profile} />
+      {/* <Tab.Screen name="Test" component={Page} /> */}
     </Tab.Navigator>
   );
 };

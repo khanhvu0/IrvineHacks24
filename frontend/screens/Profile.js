@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Pedometer } from 'expo-sensors';
 
-
+import { ref, set } from 'firebase/database';
+import { onAuthStateChanged } from 'firebase/auth';
+import { FIREBASE_AUTH, FIREBASE_DB } from '../FirebaseConfig';
 import LeaderboardComp from '../components/LeaderboardComp';
 import { isAvailableAsync } from 'expo-sensors/build/Pedometer';
 
@@ -20,7 +22,7 @@ export default function Profile() {
   const [pastStepCount, setPastStepCount] = useState(0);
   const [currentStepCount, setCurrentStepCount] = useState(0);
   // const [PedometerAvailability, SetPedometerAvailability] = useState("");
-  // const [StepCount, SetStepCount] = useState(0);
+  const [weeklyStepCount, setWeeklyStepCount] = useState(0);
 
 
   const subscribe = async () => {
@@ -106,16 +108,44 @@ export default function Profile() {
         setSixStepCount(StepCountResult6.steps);
       }
 
+      setWeeklyStepCount(pastStepCount + currentStepCount + yesterdayStepCount + twoStepCount +
+        threeStepCount + fourStepCount + fiveStepCount + sixStepCount);
+
       return Pedometer.watchStepCount(result => {
         setCurrentStepCount(result.steps);
+
+        const user = FIREBASE_AUTH.currentUser;
+        if (user) {
+          const userId = user.uid;
+
+          // Update the database with the current step count
+          set(ref(FIREBASE_DB, `dailySteps/` + userId), {
+            name: user.displayName,
+            email: user.email,
+            steps: result.steps,
+            weeklySteps: weeklyStepCount,
+          });
+          console.log(userId + result.steps);
+        }
       });
     }
   };
 
-
   useEffect(() => {
-    const subscription = subscribe();
-    return () => subscription && subscription.remove();
+    let subscription;
+  
+    const startSubscription = async () => {
+      subscription = subscribe();
+    };
+  
+    startSubscription();
+
+    return () => {
+      // Unsubscribe from the Pedometer subscription when the component is unmounted
+      if (subscription) {
+        subscription.remove();
+      }
+    };
   }, []);
 
 

@@ -7,6 +7,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
     const [loading, setLoading] = useState(false);
     const auth = FIREBASE_AUTH;
 
@@ -26,9 +27,14 @@ const Login = () => {
     const signUp = async () => {
         setLoading(true);
         try {
+            if (!username.trim()) { 
+                alert('Please enter a username');
+                return; 
+            }
             const response = await createUserWithEmailAndPassword(auth, email, password);
+            // await updateProfile(auth.currentUser, { displayName: username }); 
             console.log(response);
-            alert('Check your email!')
+            // alert('Check your email!')
         } catch (error) {
             console.log(error);
             alert('Sign up failed, please try again: ' + error.message);
@@ -40,6 +46,7 @@ const Login = () => {
     return (
         <View style={styles.container}>
             <KeyboardAvoidingView behavior='padding'>
+                <TextInput value={username} style={styles.input} placeholder='Username' onChangeText={setUsername} />
                 <TextInput value={email} style={styles.input} placeholder='Email' autoCapitalize='none' 
                 onChangeText={(text) => setEmail(text)}></TextInput>
                 <TextInput secureTextEntry={true} value={password} style={styles.input} placeholder='Password' autoCapitalize='none' 
