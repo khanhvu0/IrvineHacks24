@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import Mapping from '../map/index';
+ 
 import {useState} from 'react'
 import { Color } from '../GlobalStyles';
 
@@ -44,7 +45,7 @@ export default function Map() {
           </View>
           <View style={styles.line} />
           <View style={styles.item}>
-            <Text style={styles.itemNum}>0</Text>
+            <Text style={styles.itemNum}>123</Text>
             <Text style={styles.itemText}>cal</Text>
           </View>
           <View style={styles.line} />
