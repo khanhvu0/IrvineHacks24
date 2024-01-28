@@ -29,7 +29,24 @@ const addCoordinateIfFarEnough = (newCoordinate, path, minDistanceThreshold) => 
   }
 };
 
-export default function Mapping() {
+const addCoordinateIfFarEnough = (newCoordinate, path, minDistanceThreshold) => {
+  if (path.length === 0) {
+    // First coordinate, always add
+    return [...path, newCoordinate];
+  }
+  const lastCoordinate = path[path.length - 1];
+  const latDiff = Math.abs(newCoordinate.latitude - lastCoordinate.latitude);
+  const lonDiff = Math.abs(newCoordinate.longitude - lastCoordinate.longitude);
+
+  if (latDiff >= minDistanceThreshold || lonDiff >= minDistanceThreshold) {
+    return [...path, newCoordinate];
+  } else {
+    // Coordinates are too close, skip adding
+    return path;
+  }
+};
+
+export default function Mapping({followingState}) {
   const mapRef = useRef(null);
   const minDistanceThreshold = 0.00001;
   
@@ -62,7 +79,9 @@ export default function Mapping() {
       region={INITIAL_REGION}
       showsUserLocation
       showsMyLocationButton
-      followsUserLocation={true}
+
+      //set true with useState
+      followsUserLocation={followingState}
       //mapType='satellite'
       loadingEnabled
       ref={mapRef}
