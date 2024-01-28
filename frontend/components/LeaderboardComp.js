@@ -9,7 +9,7 @@ export default function LeaderboardComp({ number, name, points }) {
         <View style={styles.one}>
           <Text style={styles.numberTextTop}>1.</Text>
           <Text style={styles.nameTextTop}>{name}</Text>
-          <Text style={styles.pointsTextTop}>{points} points</Text>
+          <Text style={styles.pointsTextTop}>{points} steps</Text>
         </View>
       ) : number === 2 ? (
         /* number 2 */
@@ -17,7 +17,7 @@ export default function LeaderboardComp({ number, name, points }) {
         <View style={styles.two}>
           <Text style={styles.numberTextTop}>2.</Text>
           <Text style={styles.nameTextTop}>{name}</Text>
-          <Text style={styles.pointsTextTop}>{points} points</Text>
+          <Text style={styles.pointsTextTop}>{points} steps</Text>
         </View>
     </View>
       ) : number === 3 ? (
@@ -26,7 +26,7 @@ export default function LeaderboardComp({ number, name, points }) {
         <View style={styles.three}>
           <Text style={styles.numberTextTop}>3.</Text>
           <Text style={styles.nameTextTop}>{name}</Text>
-          <Text style={styles.pointsTextTop}>{points} points</Text>
+          <Text style={styles.pointsTextTop}>{points} steps</Text>
         </View>
     </View>
       ) : (
@@ -34,7 +34,7 @@ export default function LeaderboardComp({ number, name, points }) {
         <View style={styles.box}>
           <View style={styles.horizontal}>
             <Text style={styles.nameText}><Text style={styles.numberText}>{number}. </Text> pic {name}</Text>
-            <Text style={styles.pointsText}>{points} points</Text>
+            <Text style={styles.pointsText}>{points} steps</Text>
           </View>
         </View>
       )}
