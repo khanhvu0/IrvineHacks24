@@ -72,8 +72,9 @@ export default function Mapping({followingState}) {
       setTotalDistance(totalDistance + distanceFromStart);
       console.log("Distance from start: ", totalDistance); 
     }, 5000);
-    //console.log(coordinates);
-    
+  
+    //multiply total distance at the moment by 57.9 to get calories burned (avg weight 138 lbs)
+    //pace = distance/time every 20 seconds    
 
   };
 
