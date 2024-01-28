@@ -53,6 +53,7 @@ import { onValue, ref } from 'firebase/database';
 
 export default function Home() {
   const [dailySteps, setDailySteps] = useState(0);
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     // Fetch the user's daily steps from Firebase
@@ -66,6 +67,7 @@ export default function Home() {
         const data = snapshot.val();
         if (data) {
           setDailySteps(data.dailySteps || 0);
+          setUsername(data.name || "");
         }
       });
     }
@@ -78,7 +80,7 @@ export default function Home() {
       <View style={styles.bluebox}>
         <View style={styles.hello}>
           <View>
-            <Text style={styles.Hello}>Hello <Text style={styles.Name}>User</Text></Text>
+            <Text style={styles.Hello}>Hello <Text style={styles.Name}>{username}</Text></Text>
             <Text style={styles.beginner}>beginner</Text>
           </View>
           <TouchableOpacity>
@@ -200,7 +202,7 @@ const styles = StyleSheet.create({
   Hello: {
     color: 'white',
     fontSize: 18,
-    fontWeight: '300',
+    fontWeight: 300,
   },
   Name: {
     color: 'white',
@@ -210,31 +212,31 @@ const styles = StyleSheet.create({
   beginner: {
     color: 'white',
     fontSize: 12,
-    fontWeight: '500',
+    fontWeight: 500,
   },
   weekgoal: {
     fontSize: 13,
-    fontWeight: '600',
+    fontWeight: 600,
   },
   kmBar: {
     color: 'gray',
     fontSize: 11,
-    fontWeight: '400',
+    fontWeight: 400,
   },
   currentRun: {
     color: 'white',
     fontSize: 15,
-    fontWeight: '600',
+    fontWeight: 600,
   },
   currentRunDistance: {
     color: 'white',
     fontSize: 11,
-    fontWeight: '700',
+    fontWeight: 700,
   },
   currentRunCal: {
     color: 'white',
     fontSize: 11,
-    fontWeight: '300',
+    fontWeight: 300,
   },
   profileImage: {
     width: 50, // Set your desired width
