@@ -63,7 +63,7 @@ const Mapping = ({ followingState }) => {
   const translateY = new Animated.Value(0);
 
   useEffect(() => {
-    if (bonusClaimed && translateY._value !== 1) { // Check if bonusClaimed is true and translateY is not already 1
+    if (bonusClaimed && translateY._value !== 1 ) { // Check if bonusClaimed is true and translateY is not already 1
       Animated.timing(translateY, {
         toValue: 1, 
         duration: 500,
@@ -82,7 +82,10 @@ const Mapping = ({ followingState }) => {
       setCoordinates(newPath);
     }, 500);
 
-    handleBonusSteps(newCoordinate, bonusMarkers);
+    setTimeout(() => {
+      handleBonusSteps(newCoordinate, bonusMarkers);
+    }, 10000);
+    
   };
 
   const handleBonusSteps = async (newCoordinate, bonusMarkers) => {
