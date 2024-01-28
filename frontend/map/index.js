@@ -5,7 +5,7 @@ import simplify from 'simplify-js';
 
 //import { useNavigation } from 'expo-router';
 
-const INITIAL_REGION = {
+const INITIAL_REGION = { // this is in china, remember to change 
     latitude: 37.78825,
     longitude: 100.4444,
     latitudeDelta: 0.0922,

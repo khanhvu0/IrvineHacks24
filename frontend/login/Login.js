@@ -2,7 +2,7 @@ import { View, TextInput, StyleSheet, ActivityIndicator, Button, KeyboardAvoidin
 import React, { useState } from 'react';
 import { FIREBASE_AUTH } from '../FirebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -32,9 +32,10 @@ const Login = () => {
                 return; 
             }
             const response = await createUserWithEmailAndPassword(auth, email, password);
-            // await updateProfile(auth.currentUser, { displayName: username }); 
+            await updateProfile(auth.currentUser, {
+                displayName: username,
+              });
             console.log(response);
-            // alert('Check your email!')
         } catch (error) {
             console.log(error);
             alert('Sign up failed, please try again: ' + error.message);
