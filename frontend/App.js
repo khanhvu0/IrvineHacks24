@@ -58,7 +58,7 @@ export default function App() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(FIREBASE_AUTH, (authenticatedUser) => {
-      console.log('user', authenticatedUser);
+      // console.log('user', authenticatedUser);
       setUser(authenticatedUser);
     });
 

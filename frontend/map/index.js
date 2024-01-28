@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, Modal, Animated, StyleSheet } from 'react-native';
+import { View, Text, Alert, TouchableOpacity, Modal, Animated, StyleSheet } from 'react-native';
 import MapView, { PROVIDER_DEFAULT, Marker, Polyline } from 'react-native-maps';
 import simplify from 'simplify-js';
 import haversine from 'haversine';
@@ -9,8 +9,8 @@ import { ref, get, update } from 'firebase/database';
 import customMarker from '../assets/star.png';
 
 const INITIAL_REGION = {
-  latitude: 33.644644,
-  longitude: -117.824741,
+  latitude: 33.649585531243375,
+  longitude: -117.84250114971816,
   latitudeDelta: 0.0922,
   longitudeDelta: 0.0421,
 };
@@ -60,13 +60,13 @@ const Mapping = ({ followingState, onDistanceChange }) => {
   ]);
 
   const [bonusClaimed, setBonusClaimed] = React.useState(false);
-  const bonusClaimedRef = useRef(bonusClaimed);
-  const [modalVisible, setModalVisible] = React.useState(false);
+  // const bonusClaimedRef = useRef(bonusClaimed);
+  // const [modalVisible, setModalVisible] = React.useState(false);
   const translateY = new Animated.Value(0);
 
-  useEffect(() => {
-    bonusClaimedRef.current = bonusClaimed; // Update ref value when bonusClaimed changes
-  }, [bonusClaimed]);
+  // useEffect(() => {
+  //   bonusClaimedRef.current = bonusClaimed; // Update ref value when bonusClaimed changes
+  // }, [bonusClaimed]);
 
   useEffect(() => {
     if (bonusClaimed) { // Check if bonusClaimed is true and translateY is not already 1
@@ -101,7 +101,7 @@ const Mapping = ({ followingState, onDistanceChange }) => {
       };
       const distance = calculateDistanceFromMarker(newCoordinate, markerCoordinate);
       // console.log(bonusClaimed);
-      if (distance <= 0.001 && !bonusClaimedRef.current && !modalVisible) {
+      if (distance <= 0.001 && !bonusClaimed) {
         try {
           const user = FIREBASE_AUTH.currentUser;
   
@@ -123,7 +123,12 @@ const Mapping = ({ followingState, onDistanceChange }) => {
   
               console.log(`Bonus steps updated in the database.`);
               setBonusClaimed(true);
-              if(!modalVisible){setModalVisible(true);}
+              Alert.alert(
+                'Congratulations!',
+                'You earned 1000 bonus steps!',
+                [{ text: 'Claim Bonus', onPress: () => console.log('Bonus claimed') }]
+              );
+              //if(!modalVisible){setModalVisible(true);}
             } else {
               console.error(`User data not found.`);
             }
@@ -137,11 +142,10 @@ const Mapping = ({ followingState, onDistanceChange }) => {
     }
   };
 
-  const handleClaimButtonPress = () => {
-    setModalVisible(false);
-    // setBonusClaimed(false);
-    translateY.setValue(0);
-  };
+  // const handleClaimButtonPress = () => {
+  //   setModalVisible(false);
+  //   translateY.setValue(0);
+  // };
 
   return (
     <View style={{ flex: 1 }}>
@@ -173,7 +177,8 @@ const Mapping = ({ followingState, onDistanceChange }) => {
         ))}
       </MapView>
 
-      <Modal visible={modalVisible} transparent animationType="slide">
+      {/* modal has a weird bug */}
+      {/* <Modal visible={modalVisible} transparent animationType="slide">
         <View style={styles.modalContainer}>
           <ConfettiCannon
             count={200}
@@ -204,7 +209,7 @@ const Mapping = ({ followingState, onDistanceChange }) => {
             </TouchableOpacity>
           </Animated.View>
         </View>
-      </Modal>
+      </Modal> */}
     </View> 
   );
 };
