@@ -181,12 +181,12 @@ const styles = StyleSheet.create({
   runTime: {
     marginRight: 50,
     marginBottom: 12,
-    fontSize: '15',
-    fontWeight: '300',
+    fontSize: 15,
+    fontWeight: 300,
   },
   timeText: {
-    fontSize: '25',
-    fontWeight: '800',
+    fontSize: 25,
+    fontWeight: 800,
   },
   button: {
     flexDirection: 'row',
@@ -200,12 +200,12 @@ const styles = StyleSheet.create({
   },
   itemNum: {
     textAlign: 'left',
-    fontWeight: '500',
-    fontSize: '15',
+    fontWeight: 500,
+    fontSize: 15,
   },
   itemText: {
     textAlign: 'right',
-    fontWeight: '300',
+    fontWeight: 300,
     fontSize: 10,
   },
   location: {
