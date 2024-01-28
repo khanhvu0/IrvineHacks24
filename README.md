@@ -1,20 +1,8 @@
-Install:
-1. Node LTS version: https://nodejs.org/en/download/
+# Stride Current Dev Branch
 
-Navigation: 
-1. $cd frontend then $npm install
-2. $npm install @react-navigation/native
-3. $npx expo install react-native-screens react-native-safe-area-context
-4. $npm install @react-navigation/stack
-5. $npm install @react-navigation/bottom-tabs
-6. $npx expo install expo-sensors
+This is the current development branch for Stride. This branch contains most of the development onwards from 1/27/2024 at noon. 
 
-To run simulator: 
-1. $cd frontend
-2. run $npx expo start
-3. press "a" for android simulator OR "i" for IOS simulator OR scan QR Code using Expo Go App
+## Current Progress
 
-Firebase:
-npx expo install firebase
-
-npm install simplify-js
+- Updating the front-end UI
+- Adding more functionality to tracking

@@ -27,8 +27,6 @@ export default function Profile() {
   const [sixStepCount, setSixStepCount] = useState(0);
   const [pastStepCount, setPastStepCount] = useState(0);
   const [currentStepCount, setCurrentStepCount] = useState(0);
-  // const [PedometerAvailability, SetPedometerAvailability] = useState("");
-  // const [weeklyStepCount, setWeeklyStepCount] = useState(0);
 
 
   const subscribe = async () => {
@@ -75,8 +73,6 @@ export default function Profile() {
       start5.setHours(0, 0, 0)
       end6.setHours(0, 0, 0)
       start6.setHours(0, 0, 0)
-      
-      // start.setDate(end.getDate() - 1);
 
       const pastStepCountResult = await Pedometer.getStepCountAsync(start, end);
       const yesterdayStepCountResult = await Pedometer.getStepCountAsync(startYesterday, endYesterday);
@@ -114,8 +110,6 @@ export default function Profile() {
         setSixStepCount(StepCountResult6.steps);
       }
 
-      // setWeeklyStepCount(pastStepCountResult.steps + StepCountResult2.steps + StepCountResult3.steps + StepCountResult4.steps + StepCountResult5.steps + StepCountResult6.steps);
-
       return Pedometer.watchStepCount(result => {
         setCurrentStepCount(result.steps);
 
@@ -148,7 +142,7 @@ export default function Profile() {
     return () => {
       // Unsubscribe from the Pedometer subscription when the component is unmounted
       if (subscription) {
-        //subscription.remove();
+        subscription.remove();
       }
     };
   }, []);
@@ -290,7 +284,7 @@ const styles = StyleSheet.create({
   profile: {
     color: 'white',
     fontSize: 15,
-    fontWeight: '600',
+    fontWeight: 600,
     marginBottom: 5,
     textAlign: 'center',
   },
@@ -309,7 +303,7 @@ const styles = StyleSheet.create({
   beginner: {
     color: 'white',
     fontSize: 12,
-    fontWeight: '500',
+    fontWeight: 500,
     textAlign: 'center',
   },
   //whitebox==================================================
@@ -329,12 +323,12 @@ const styles = StyleSheet.create({
   },
   totalProgress: {
     fontSize: 13,
-    fontWeight: '600',
+    fontWeight: 600,
   },
   button: {
     color: 'gray',
     fontSize: 11,
-    fontWeight: '400',
+    fontWeight: 400,
   },
   innerbox: {
     flexDirection: 'row',
@@ -352,11 +346,11 @@ const styles = StyleSheet.create({
   itemNum: {
     textAlign: 'left',
     fontWeight: '600',
-    fontSize: 20,
+    fontSize: '20',
   },
   itemText: {
     textAlign: 'right',
-    fontWeight: '300',
+    fontWeight: 300,
     fontSize: 10,
   },
   line: {
@@ -404,17 +398,17 @@ const styles = StyleSheet.create({
   currentRun: {
     color: 'white',
     fontSize: 15,
-    fontWeight: '600',
+    fontWeight: 600,
   },
   currentRunDistance: {
     color: 'white',
     fontSize: 11,
-    fontWeight: '700',
+    fontWeight: 700,
   },
   currentRunCal: {
     color: 'white',
     fontSize: 11,
-    fontWeight: '300',
+    fontWeight: 300,
   },
 });
 
