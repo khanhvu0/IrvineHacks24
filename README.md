@@ -19,7 +19,7 @@ The map is the main way that to interact and see your path. It allows the user t
 
 The leaderboard is based on daily steps and will get updated as each user walks more steps. This will enable competition and have more users reach out to friends and family to get the app.
 
-###Profile
+### Profile
 
 The profile is a standard page to check settings and personal information. It will allows users to update their profile image and information. They can also see other settings as well.
 
@@ -29,10 +29,6 @@ The profile is a standard page to check settings and personal information. It wi
 
 Stride is a mobile app for iOS designed around being a simple yet effective way to track walks using geolocation and geospatial services. The home page gives users their daily steps and progress goals. The map page is an interactive map that follows your path and draws it out for users in real-time, along with tracking distance ran, calories burned, and current pace. The leaderboard allows users to compete with friends and see how well they are doing to encourage users to friendly competition. There is also a profile page to update settings and manage the account. Users are asked to login/create an account when first using the app. 
 
-
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
 
 ## Authors
