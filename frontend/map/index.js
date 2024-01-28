@@ -1,7 +1,7 @@
-import React, { useRef, useEffect } from 'react';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import React, { useRef, useState, useEffect } from 'react';
+import MapView, { PROVIDER_DEFAULT, PROVIDER_GOOGLE } from 'react-native-maps';
 import { StyleSheet, TouchableOpacity, View , Text} from 'react-native';
-//import Geolocation from "react-native-geolocation-service";
+
 //import { useNavigation } from 'expo-router';
 
 const INITIAL_REGION = {
@@ -12,8 +12,7 @@ const INITIAL_REGION = {
   };
 
 export default function Mapping() {
- 
-  //const mapRef = useRef();
+  const mapRef = useRef(null);
   //const navigation = useNavigation();
   
   
@@ -45,22 +44,46 @@ export default function Mapping() {
 		console.log(region);
 	};
 
-
   // mapRef.current?.animateToRegion(GreenBayStadium);
 
   return (
     <View style={{flex: 1}}>
       <MapView style={StyleSheet.absoluteFill}
-      provider={PROVIDER_GOOGLE}
+      provider={PROVIDER_DEFAULT}
       region={INITIAL_REGION}
       showsUserLocation
-      showsMyLocationButton 
+      showsMyLocationButton
+      followsUserLocation={true}
       //mapType='satellite'
       loadingEnabled
-      //followsUserLocation={true}
-      //ref={mapRef}
-      onRegionChangeComplete={onRegionChange}
+      ref={mapRef}
+      //onRegionChangeComplete={onRegionChange}
       //onUserLocationChange={event => console.log(event.nativeEvent)}
+      // onRegionChange={(e, isGesture) => {
+      //     // mapRef.current?.animateCamera({
+      //     //   center: {
+      //     //     latitude: e.nativeEvent.coordinate.latitude,
+      //     //     longitude: e.nativeEvent.coordinate.longitude,
+      //     //   },
+      //     //   pitch: 0,
+      //     //   heading: e.nativeEvent.coordinate.heading,
+      //     //   altitude: 1400,
+      //     //   zoom: 19,
+      //     // })
+      //     if(isGesture){
+      //       console.log("I did not MOVE");
+      //     }
+      //     if(!isGesture){
+      //       console.log("I MOVED");
+      //       mapRef.current?.animateToRegion({
+      //         latitude: e.nativeEvent.coordinate.latitude,
+      //         longitude: e.nativeEvent.coordinate.longitude,
+      //         latitudeDelta: 0.00001,
+      //         longitudeDelta: 0.00001
+      //       })
+      //     }
+      //     //setMyLocation(e.nativeEvent.coordinate)
+      // }}
       />
     </View>
   );

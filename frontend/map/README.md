@@ -10,4 +10,3 @@ We should not need this in the final project but it was necessary for the instru
 
 
 //Upgraded react native to 0.73.2 
-// run $npm install react-native-geolocation-service
