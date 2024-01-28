@@ -129,14 +129,14 @@ export default function Profile() {
     <ScrollView>
     <View style={styles.container}>
     <View style={styles.rows1}>
-        <LeaderboardComp filepath={person3} number={1} name='Bob' points={99}/>
+        <LeaderboardComp filepath={person3} number={1} name='Khanh' points={99}/>
         <View style={styles.horiz}>
-        <LeaderboardComp filepath={person2} number={2} name='Henry' points={85}/>
-        <LeaderboardComp filepath={person4} number={3} name='Max' points={69}/>
+        <LeaderboardComp filepath={person2} number={2} name='Ethan' points={85}/>
+        <LeaderboardComp filepath={person1} number={3} name='Aadi' points={69}/>
         </View>
       </View>
       <View style={styles.rows}>
-        <LeaderboardComp filepath={person1} number={4} name='Adi' points={24}/>
+        <LeaderboardComp filepath={person4} number={4} name='Max' points={24}/>
         <LeaderboardComp filepath={person5} number={5} name='Ewu' points={20}/>
         <LeaderboardComp filepath={person6} number={6} name='Kon' points={13}/>
         <LeaderboardComp filepath={person7} number={7} name='Irvine' points={10}/>

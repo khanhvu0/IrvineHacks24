@@ -197,7 +197,7 @@ return(
           <View>
             <Text style={styles.profile}>Profile </Text>
             <Image
-              source={require('../images/profilepic.jpeg')}
+              source={require('../images/leaderboard/person4.jpg')}
               style={styles.profileImage}
             />
             <Text style={styles.Name}>Max</Text>
