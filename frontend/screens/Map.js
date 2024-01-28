@@ -1,13 +1,71 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import Mapping from '../map/index';
- 
-import {useState} from 'react'
+import {useState, useRef, useEffect} from 'react'
 import { Color } from '../GlobalStyles';
 
 export default function Map() {
 
   const [following, setFollowing] = useState(false);
+
+  const formatTime = (seconds) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+  
+    const pad = (value) => (value < 10 ? `0${value}` : `${value}`);
+  
+    return `${pad(hours)}:${pad(minutes)}:${pad(remainingSeconds)}`;
+  };
+
+  const [time, setTime] = useState(0);
+  const [running, setRunning] = useState(false);
+  const [stopwatchOn, setStopwatchOn] = useState(false);
+  const intervalRef = useRef(null);
+  const startTimeRef = useRef(0);
+
+  useEffect(() => {
+    return () => clearInterval(intervalRef.current);
+  }, []);
+
+  const updateElapsedTime = () => {
+    const elapsedTime = Math.floor((Date.now() - startTimeRef.current) / 1000);
+    setTime(elapsedTime);
+  };
+
+  const startStopwatch = () => {
+    startTimeRef.current = Date.now() - time * 1000;
+    intervalRef.current = setInterval(() => {
+      setTime(Math.floor((Date.now() -
+      startTimeRef.current) / 1000));
+    }, 1000);
+    setRunning(true);
+    setStopwatchOn(true);
+    updateElapsedTime();
+  };
+
+  const pauseStopwatch = () => {
+    clearInterval(intervalRef.current);
+    setRunning(false);
+  };
+
+  const resumeStopwatch = () => {
+    startTimeRef.current = Date.now() - time * 1000;
+    intervalRef.current = setInterval(() => {
+      setTime(Math.floor(
+        (Date.now() - startTimeRef.current) / 1000));
+    }, 1000);
+    setRunning(true);
+    updateElapsedTime();
+  };
+
+  const resetStopwatch = () => { 
+    clearInterval(intervalRef.current); 
+    setTime(0); 
+    setRunning(false); 
+    setStopwatchOn(false);
+}; 
+  
 
   return (
     <View style={styles.container1}>
@@ -20,7 +78,7 @@ export default function Map() {
         <View style={styles.horizontal}>
           <View>
             <Text style={styles.runTime}>Run Time</Text>
-            <Text style={styles.timeText}>01:45:23</Text>
+            <Text style={styles.timeText}>{formatTime(time)}</Text>
           </View>
 
           <View style={styles.topright}>
@@ -29,9 +87,26 @@ export default function Map() {
               <Image source={require('../images/location.png')} style={styles.location}/>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => console.log('Button Pressed')}>
+          <TouchableOpacity onPress={() => {
+            if (!stopwatchOn) {
+              startStopwatch();
+            }
+            else {
+              if (running) {
+                pauseStopwatch();
+              }
+              else {
+                resumeStopwatch();
+              }
+            }
+          }}>
             <View style={styles.button}>
               <Image source={require('../images/pause.webp')} style={styles.pause}/>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => resetStopwatch()}>
+            <View style={styles.followButton}>
+              <Image source={require('../images/reset.png')} style={styles.location}/>
             </View>
           </TouchableOpacity>
           </View>
