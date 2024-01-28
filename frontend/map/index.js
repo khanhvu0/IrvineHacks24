@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
-import MapView, { PROVIDER_DEFAULT, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_DEFAULT, PROVIDER_GOOGLE, Polyline } from 'react-native-maps';
 import { StyleSheet, TouchableOpacity, View , Text} from 'react-native';
+import simplify from 'simplify-js';
 
 //import { useNavigation } from 'expo-router';
 
@@ -11,40 +12,48 @@ const INITIAL_REGION = {
     longitudeDelta: 0.0421,
   };
 
+const addCoordinateIfFarEnough = (newCoordinate, path, minDistanceThreshold) => {
+  if (path.length === 0) {
+    // First coordinate, always add
+    return [...path, newCoordinate];
+  }
+  const lastCoordinate = path[path.length - 1];
+  const latDiff = Math.abs(newCoordinate.latitude - lastCoordinate.latitude);
+  const lonDiff = Math.abs(newCoordinate.longitude - lastCoordinate.longitude);
+
+  if (latDiff >= minDistanceThreshold || lonDiff >= minDistanceThreshold) {
+    return [...path, newCoordinate];
+  } else {
+    // Coordinates are too close, skip adding
+    return path;
+  }
+};
+
 export default function Mapping() {
   const mapRef = useRef(null);
-  //const navigation = useNavigation();
+  const minDistanceThreshold = 0.00001;
   
-  
-  // useEffect(() => {
-	// 	navigation.setOptions({
-	// 		headerRight: () => (
-	// 			<TouchableOpacity onPress={focusMap}>
-	// 				<View style={{ padding: 10 }}>
-	// 					<Text>Focus</Text>
-	// 				</View>
-	// 			</TouchableOpacity>
-	// 		)
-	// 	});
-	// }, []);
+  // const onRegionChange = (region) => {
+	// 	console.log(region);
+	// };
 
+  const [coordinates, setCoordinates] = useState([]);
+  const simplifiedCoordinatesRef = useRef([]);
 
-  // const focusMap = () => {		
-  //   const GreenBayStadium = {
-  //     latitude: 44.5013,
-  //     longitude: -88.0622,
-  //     latitudeDelta: 0.1,
-  //     longitudeDelta: 0.1
-  //   };
-  // };
+  useEffect(() => {
+    // Update the simplified coordinates whenever the coordinates change
+    simplifiedCoordinatesRef.current = simplify(coordinates, 0.1, true);
+  }, [coordinates]);
 
+  const handleLocationChange = (event) => {
+    const newCoordinate = event.nativeEvent.coordinate;
+    setTimeout(() => {
+      const newPath = addCoordinateIfFarEnough(newCoordinate, coordinates, minDistanceThreshold);
+      setCoordinates(newPath);
+    }, 5000);
+    //console.log(coordinates);
+  };
 
-
-  const onRegionChange = (region) => {
-		console.log(region);
-	};
-
-  // mapRef.current?.animateToRegion(GreenBayStadium);
 
   return (
     <View style={{flex: 1}}>
@@ -57,6 +66,10 @@ export default function Mapping() {
       //mapType='satellite'
       loadingEnabled
       ref={mapRef}
+      onUserLocationChange={(event) => {
+        handleLocationChange(event);
+      }}
+
       //onRegionChangeComplete={onRegionChange}
       //onUserLocationChange={event => console.log(event.nativeEvent)}
       // onRegionChange={(e, isGesture) => {
@@ -84,7 +97,14 @@ export default function Mapping() {
       //     }
       //     //setMyLocation(e.nativeEvent.coordinate)
       // }}
+      >
+        <Polyline
+          coordinates={coordinates}
+          strokeColor="#000" // Line color
+          strokeWidth={5}
       />
+    </MapView>
+
     </View>
   );
 }
