@@ -345,8 +345,8 @@ const styles = StyleSheet.create({
   },
   itemNum: {
     textAlign: 'left',
-    fontWeight: 600,
-    fontSize: 20,
+    fontWeight: '600',
+    fontSize: '20',
   },
   itemText: {
     textAlign: 'right',

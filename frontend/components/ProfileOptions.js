@@ -16,7 +16,7 @@ export default function Profile({ filepath, title }) {
           <Text style={styles.title}>{title}</Text>
         </View>
         <TouchableOpacity>
-          <Text style={styles.button}>></Text>
+          <Text style={styles.button}></Text>
         </TouchableOpacity>
       </View>
 
@@ -53,12 +53,12 @@ const styles = StyleSheet.create({
     marginTop: 0, // Adjust the margin as needed
   },
   title: {
-    fontSize: '15',
+    fontSize: 15,
     fontWeight: '500',
     color: 'gray',
   },
   button: {
-    fontSize: '20',
+    fontSize: 20,
     fontWeight: '800',
     color: 'gray',
   },

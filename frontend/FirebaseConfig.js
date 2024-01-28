@@ -20,8 +20,15 @@ const firebaseConfig = {
   measurementId: "G-E2RR5NTZ5L"
 };
 
+// import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
+// import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
+
 // Initialize Firebase
 export const FIREBASE_APP = initializeApp(firebaseConfig);
 export const FIREBASE_AUTH = getAuth(FIREBASE_APP);
 export const FIREBASE_DB = getDatabase(FIREBASE_APP);
 //const analytics = getAnalytics(app);
+
+// const auth = initializeAuth(FIREBASE_APP, {
+//   persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+// });

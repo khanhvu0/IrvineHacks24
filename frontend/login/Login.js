@@ -16,7 +16,7 @@ const Login = () => {
         setLoading(true);
         try {
             const response = await signInWithEmailAndPassword(auth, email, password);
-            console.log(response);
+            // console.log(response);
         } catch (error) {
             console.log(error);
             alert('Login failed, please try again: ' + error.message);
@@ -35,8 +35,8 @@ const Login = () => {
             const response = await createUserWithEmailAndPassword(auth, email, password);
             await updateProfile(auth.currentUser, {
                 displayName: username,
-            });
-            console.log(response);
+              });
+            // console.log(response);
         } catch (error) {
             console.log(error);
             alert('Sign up failed, please try again: ' + error.message);

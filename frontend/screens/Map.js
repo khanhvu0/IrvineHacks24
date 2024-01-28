@@ -129,7 +129,7 @@ export default function Map() {
           </View>
           <View style={styles.line} />
           <View style={styles.item}>
-            <Text style={styles.itemNum}>{Math.round(distance.toFixed(1) / (time * 3600))}</Text>
+            <Text style={styles.itemNum}>{Math.round(distance.toFixed(1) / ((time + 0.000001) * 3600))}</Text>
             <Text style={styles.itemText}>km/hr</Text>
           </View>
         </View>
@@ -181,12 +181,12 @@ const styles = StyleSheet.create({
   runTime: {
     marginRight: 50,
     marginBottom: 12,
-    fontSize: 15,
-    fontWeight: 300,
+    fontSize: '15',
+    fontWeight: '300',
   },
   timeText: {
-    fontSize: 25,
-    fontWeight: 800,
+    fontSize: '25',
+    fontWeight: '800',
   },
   button: {
     flexDirection: 'row',
@@ -200,8 +200,8 @@ const styles = StyleSheet.create({
   },
   itemNum: {
     textAlign: 'left',
-    fontWeight: 500,
-    fontSize: 15,
+    fontWeight: '500',
+    fontSize: '15',
   },
   itemText: {
     textAlign: 'right',
