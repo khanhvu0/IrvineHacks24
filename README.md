@@ -1,6 +1,6 @@
-#This is an older version of a developer branch
+# This is an older version of a developer branch
 
-##This simply contains instructions regarding installing necessary npm packages and Node
+## This simply contains instructions regarding installing necessary npm packages and Node
 
 Install:
 1. Node LTS version: https://nodejs.org/en/download/
