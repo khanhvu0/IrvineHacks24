@@ -123,7 +123,6 @@ export default function Profile() {
             email: user.email,
             dailySteps: result.steps + pastStepCountResult.steps,
             weeklySteps: result.steps + yesterdayStepCountResult.steps + pastStepCountResult.steps + StepCountResult2.steps + StepCountResult3.steps + StepCountResult4.steps + StepCountResult5.steps + StepCountResult6.steps,
-            bonusSteps: 0, // change this
           });
           console.log(userId + result.steps);
         }
