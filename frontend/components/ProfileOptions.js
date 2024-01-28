@@ -53,12 +53,12 @@ const styles = StyleSheet.create({
     marginTop: 0, // Adjust the margin as needed
   },
   title: {
-    fontSize: '15',
+    fontSize: 15,
     fontWeight: '500',
     color: 'gray',
   },
   button: {
-    fontSize: '20',
+    fontSize: 20,
     fontWeight: '800',
     color: 'gray',
   },

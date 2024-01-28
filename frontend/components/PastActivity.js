@@ -54,21 +54,21 @@ const styles = StyleSheet.create({
     marginTop: 10, // Adjust the margin as needed
   },
   date: {
-    fontSize: '11',
+    fontSize: 11,
     fontWeight: '300',
   },
   distance: {
     padding: 10,
-    fontSize: '15',
+    fontSize: 15,
     fontWeight: '600',
   },
   data: {
-    fontSize: '11',
+    fontSize: 11,
     fontWeight: '300',
     marginBottom: 10,
   },
   button: {
-    fontSize: '20',
+    fontSize: 20,
     fontWeight: '200',
   },
   image: {

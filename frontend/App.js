@@ -13,6 +13,11 @@ import Page from './map/index'
 import Login from './login/Login'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { FIREBASE_AUTH } from './FirebaseConfig';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faChartSimple } from '@fortawesome/free-solid-svg-icons/faChartSimple'
+import { faHouse } from '@fortawesome/free-solid-svg-icons/faHouse'
+import { faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -28,11 +33,22 @@ const MainStackNavigator = () => {
 const TabNavigator = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} options={{ headerShown: false }} />
-      <Tab.Screen name="Leaderboard" component={Leaderboard} options={{ headerShown: false }} />
-      <Tab.Screen name="Map" component={Map} options={{ headerShown: false }} />
-      <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
-      {/* <Tab.Screen name="Test" component={Page} /> */}
+      <Tab.Screen name="Home" component={Home} options={{ headerShown: false, 
+        tabBarIcon: () => (
+          <FontAwesomeIcon icon={faHouse} />
+        ),}} />
+      <Tab.Screen name="Leaderboard" component={Leaderboard} options={{ headerShown: false, 
+      tabBarIcon: () => (
+        <FontAwesomeIcon icon={faChartSimple} />
+      ),}} /> 
+      <Tab.Screen name="Map" component={Map} options={{ headerShown: false, 
+      tabBarIcon: () => (
+        <FontAwesomeIcon icon={faMapLocationDot} />
+      ),}} />
+      <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false, 
+      tabBarIcon: () => (
+        <FontAwesomeIcon icon={faUser} />
+      ), }} />
     </Tab.Navigator>
   );
 };

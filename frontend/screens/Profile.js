@@ -208,7 +208,7 @@ return(
           <View style={styles.whiteboxrow1}>
             <Text style={styles.totalProgress}>Total Progress</Text>
             <TouchableOpacity>
-              <Text style={styles.button}>></Text>
+              <Text style={styles.button}></Text>
             </TouchableOpacity>
           </View>
             <View style={styles.innerbox}>
@@ -352,7 +352,7 @@ const styles = StyleSheet.create({
   itemNum: {
     textAlign: 'left',
     fontWeight: '600',
-    fontSize: '20',
+    fontSize: 20,
   },
   itemText: {
     textAlign: 'right',

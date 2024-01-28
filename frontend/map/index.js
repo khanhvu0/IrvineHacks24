@@ -83,13 +83,14 @@ const Mapping = ({ followingState, onDistanceChange }) => {
 
     const newPath = addCoordinateIfFarEnough(newCoordinate, coordinates, 0.00001);
     const simplifiedCoordinates = simplify(newPath, 0.001, true);
-    setCoordinates(newPath);
+    setCoordinates(simplifiedCoordinates);
 
     const distanceFromStart = calculateDistanceFromStart(coordinates);
     setTotalDistance(totalDistance + distanceFromStart);
     onDistanceChange(totalDistance + distanceFromStart);
 
-    handleBonusSteps(newCoordinate, bonusMarkers);
+    setTimeout(() => {handleBonusSteps(newCoordinate, bonusMarkers);}, 10000) 
+    
   };
 
   const handleBonusSteps = async (newCoordinate, bonusMarkers) => {
