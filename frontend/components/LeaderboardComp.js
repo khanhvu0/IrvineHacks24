@@ -220,10 +220,8 @@ export default function LeaderboardComp({ filepath, number, name, points }) {
                   source={filepath}
                   style={styles.profileImageBoard}
                 /> 
+                 <Text style={styles.nameText}>{name}</Text>
             </View>
-
-            <Text style={styles.nameText}>
-              {name}</Text>
 
             <Text style={styles.pointsText}>{points} points</Text>
 
@@ -256,11 +254,11 @@ export default function LeaderboardComp({ filepath, number, name, points }) {
       transform: [{ translateY: 30 }],
     },
     two: {
-      left: '-60%',
+      left: '-30%',
       alignItems: 'center',
     },
     three: {
-      left: '60%',
+      left: '30%',
       alignItems: 'center',
     },
     horizontal: {
@@ -280,7 +278,8 @@ export default function LeaderboardComp({ filepath, number, name, points }) {
     },
     nameText: {
       fontSize: 15,
-      fontWeight: '300',
+      fontWeight: 400,
+      marginLeft: 15,
     },
     pointsText: {
       fontSize: 15,
@@ -302,7 +301,7 @@ export default function LeaderboardComp({ filepath, number, name, points }) {
     },
     nameTextTop: {
       fontSize: 15,
-      fontWeight: '300',
+      fontWeight: 400,
       color: 'white',
       transform: [{ translateY: -10 }],
     },
@@ -314,9 +313,9 @@ export default function LeaderboardComp({ filepath, number, name, points }) {
       transform: [{ translateY: -10 }],
     },
     profileImage: {
-      width: 60, // Set your desired width
-      height: 60, // Set your desired height
-      borderRadius: 30, // Half of the width and height to make it a circle
+      width: 90, // Set your desired width
+      height: 90, // Set your desired height
+      borderRadius: 45, // Half of the width and height to make it a circle
       //borderWidth: 2,
       //borderColor: Color.gray,
     },
