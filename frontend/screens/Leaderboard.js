@@ -129,14 +129,14 @@ export default function Profile() {
     <ScrollView>
     <View style={styles.container}>
     <View style={styles.rows1}>
-        <LeaderboardComp filepath={person1} number={1} name='Bob' points={99}/>
+        <LeaderboardComp filepath={person3} number={1} name='Bob' points={99}/>
         <View style={styles.horiz}>
         <LeaderboardComp filepath={person2} number={2} name='Henry' points={85}/>
-        <LeaderboardComp filepath={person3} number={3} name='Max' points={69}/>
+        <LeaderboardComp filepath={person4} number={3} name='Max' points={69}/>
         </View>
       </View>
       <View style={styles.rows}>
-        <LeaderboardComp filepath={person4} number={4} name='Adi' points={24}/>
+        <LeaderboardComp filepath={person1} number={4} name='Adi' points={24}/>
         <LeaderboardComp filepath={person5} number={5} name='Ewu' points={20}/>
         <LeaderboardComp filepath={person6} number={6} name='Kon' points={13}/>
         <LeaderboardComp filepath={person7} number={7} name='Irvine' points={10}/>
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     height: '100%', // Use 100% height
   },
   rows: {
-    backgroundColor: Color.blue,
+    backgroundColor: Color.gray,
     alignItems: 'center',
     width: '100%',
     paddingBottom: 20,
@@ -168,12 +168,12 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
   },
   rows1: {
-    backgroundColor: Color.gray,
+    backgroundColor: Color.blue,
     alignItems: 'center',
     width: '100%',
     paddingTop: 50,
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
   },
   horiz: {
     flexDirection: 'row',
