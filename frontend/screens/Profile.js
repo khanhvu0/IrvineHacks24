@@ -22,7 +22,7 @@ export default function Profile() {
   const [pastStepCount, setPastStepCount] = useState(0);
   const [currentStepCount, setCurrentStepCount] = useState(0);
   // const [PedometerAvailability, SetPedometerAvailability] = useState("");
-  const [weeklyStepCount, setWeeklyStepCount] = useState(0);
+  // const [weeklyStepCount, setWeeklyStepCount] = useState(0);
 
 
   const subscribe = async () => {
@@ -108,7 +108,7 @@ export default function Profile() {
         setSixStepCount(StepCountResult6.steps);
       }
 
-      setWeeklyStepCount(pastStepCountResult.steps + StepCountResult2.steps + StepCountResult3.steps + StepCountResult4.steps + StepCountResult5.steps + StepCountResult6.steps);
+      // setWeeklyStepCount(pastStepCountResult.steps + StepCountResult2.steps + StepCountResult3.steps + StepCountResult4.steps + StepCountResult5.steps + StepCountResult6.steps);
 
       return Pedometer.watchStepCount(result => {
         setCurrentStepCount(result.steps);
@@ -121,7 +121,7 @@ export default function Profile() {
           update(ref(FIREBASE_DB, `dailySteps/` + userId), {
             name: user.displayName,
             email: user.email,
-            steps: result.steps + pastStepCountResult.steps,
+            dailySteps: result.steps + pastStepCountResult.steps,
             weeklySteps: result.steps + yesterdayStepCountResult.steps + pastStepCountResult.steps + StepCountResult2.steps + StepCountResult3.steps + StepCountResult4.steps + StepCountResult5.steps + StepCountResult6.steps,
           });
           console.log(userId + result.steps);
