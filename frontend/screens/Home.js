@@ -76,12 +76,11 @@ export default function Home() {
   return (
     <ScrollView>
     <View style={styles.container}>
-      <CircularProgressBar dailySteps={dailySteps} goalSteps={20000} />
       <View style={styles.bluebox}>
         <View style={styles.hello}>
           <View>
-            <Text style={styles.Hello}>Hello <Text style={styles.Name}>{username}</Text></Text>
-            <Text style={styles.beginner}>beginner</Text>
+            <Text style={styles.Hello}>hello <Text style={styles.Name}>Max!</Text></Text>
+            <Text style={styles.beginner}>level: beginner</Text>
           </View>
           <TouchableOpacity>
             <Image
@@ -90,20 +89,12 @@ export default function Home() {
             />
           </TouchableOpacity>
         </View>
-        <View style={styles.whitebox}>
-          <View style={styles.whiteboxrow1}>
-            <Text style={styles.weekgoal}>Week Goal: 50km</Text>
-            <TouchableOpacity>
-              <Text style={styles.whiteText}>Weekly Goals Button</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.whiteboxrow2}>
-            <Text style={styles.kmBar}>35km done</Text>
-            <TouchableOpacity>
-              <Text style={styles.kmBar}>15km left</Text>
-            </TouchableOpacity>
-          </View>
+        <Text style={styles.progressText}>Your Progress</Text>
+        <View style={styles.progress}>
+          <CircularProgressBar dailySteps={dailySteps} goalSteps={20000} />
         </View>
+        
+
       </View>
 
       <View style={styles.current}>
@@ -114,8 +105,8 @@ export default function Home() {
             />
         </View>
         <View style={styles.currentInfo}>
-          <Text style={styles.currentRun}>Morning Run</Text>
-          <Text style={styles.whiteText}>1:23:44</Text>
+          <Text style={styles.currentRun}>Current: Morning Walk</Text>
+          <Text style={styles.whiteText}>0:23:44</Text>
         </View>
         <View style={styles.currentInfo}>
           <Text style={styles.currentRunDistance}>10.9km</Text>
@@ -144,7 +135,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Color.blue,
     width: '100%',
-    height: '30%',
+    height: 250,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },
@@ -185,9 +176,10 @@ const styles = StyleSheet.create({
     backgroundColor: Color.blue,
     marginTop: 30,
     marginBottom: 25,
+    transform: [{ translateY: 210 }],
   },
   currentInfo: {
-    color: 'white',
+    color: Color.white,
     alignItems: 'center',
   },
   recent: {
@@ -195,24 +187,28 @@ const styles = StyleSheet.create({
     backgroundColor: Color.white,
     borderRadius: 30,
     width: '80%',
+    marginTop: 200,
   },
   whiteText: {
     color: 'white',
+    fontSize: 12,
+    fontWeight: '700',
+    marginTop: 10,
   },
   Hello: {
     color: 'white',
-    fontSize: 18,
-    fontWeight: 300,
+    fontSize: 20,
+    fontWeight: '600',
   },
   Name: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 35,
     fontWeight: 'bold',
   },
   beginner: {
     color: 'white',
     fontSize: 12,
-    fontWeight: 500,
+    fontWeight: '500',
   },
   weekgoal: {
     fontSize: 13,
@@ -224,9 +220,9 @@ const styles = StyleSheet.create({
     fontWeight: 400,
   },
   currentRun: {
-    color: 'white',
+    color: Color.white,
     fontSize: 15,
-    fontWeight: 600,
+    fontWeight: '600',
   },
   currentRunDistance: {
     color: 'white',
@@ -239,9 +235,18 @@ const styles = StyleSheet.create({
     fontWeight: 300,
   },
   profileImage: {
-    width: 50, // Set your desired width
-    height: 50, // Set your desired height
-    borderRadius: 25, // Half of the width and height to make it a circle
+    width: 70, // Set your desired width
+    height: 70, // Set your desired height
+    borderRadius: 35, // Half of the width and height to make it a circle
   },
+  progress: {
+    transform: [{ translateY: 200 }],
+  },
+  progressText: {
+    color: 'black',
+    transform: [{ translateY: 200 }],
+    fontSize:  30,
+    fontWeight: '800',
+  }
 });
 
