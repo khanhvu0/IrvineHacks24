@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   itemText: {
     textAlign: 'right',
     fontWeight: '300',
-    fontSize: '10',
+    fontSize: 10,
   },
   location: {
     width: 40, // Set your desired width
