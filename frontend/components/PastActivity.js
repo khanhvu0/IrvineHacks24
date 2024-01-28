@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 
-export default function PastActivity({ date, distance, filepath }) {
+export default function PastActivity({ filepath, date, distance }) {
   return (
     <View style={styles.container}>
       
@@ -13,7 +13,7 @@ export default function PastActivity({ date, distance, filepath }) {
             ></Image> 
         </View>
         <View style={styles.activityInfo}>
-          <Text style={styles.date}>{date}</Text>
+          <Text style={styles.date}>{date},</Text>
           <Text style={styles.distance}>{distance} km</Text>
           <Text style={styles.data}>701kcal 11.2km/hr</Text>
         </View>

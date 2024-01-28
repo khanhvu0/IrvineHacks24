@@ -58,9 +58,10 @@ export default function Home() {
       </View>
 
       <View style={styles.recent}>
-        <PastActivity filepath={map1} date='December 19th, 8:59AM' distance={12}/>
-        <PastActivity filepath={map2} date='November 26th, 7:50AM' distance={9}/>
-        <PastActivity filepath={map3} date='November 17th, 8:02AM' distance={8}/>
+        <PastActivity filepath={map1} date="December 19th, 8:59AM" distance={12}/>
+        <PastActivity filepath={map2} date="November 26th, 7:50AM" distance={9}/>
+        <PastActivity filepath={map3} date="November 17th, 8:02AM" distance={8}/>
+        <PastActivity filepath={map1} date="November 16th, 8:59AM" distance={11}/>
       </View>
     </View>
     </ScrollView>

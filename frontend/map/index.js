@@ -11,7 +11,7 @@ const INITIAL_REGION = {
     longitudeDelta: 0.0421,
   };
 
-export default function Mapping() {
+export default function Mapping({followingState}) {
   const mapRef = useRef(null);
   //const navigation = useNavigation();
   
@@ -53,7 +53,9 @@ export default function Mapping() {
       region={INITIAL_REGION}
       showsUserLocation
       showsMyLocationButton
-      followsUserLocation={true}
+
+      //set true with useState
+      followsUserLocation={followingState}
       //mapType='satellite'
       loadingEnabled
       ref={mapRef}

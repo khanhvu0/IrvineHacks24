@@ -28,10 +28,10 @@ const MainStackNavigator = () => {
 const TabNavigator = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Leaderboard" component={Leaderboard} />
-      <Tab.Screen name="Map" component={Map} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Home" component={Home} options={{headerShown: false}}/>
+      <Tab.Screen name="Leaderboard" component={Leaderboard} options={{headerShown: false}}/>
+      <Tab.Screen name="Map" component={Map} options={{headerShown: false}}/>
+      <Tab.Screen name="Profile" component={Profile} options={{headerShown: false}}/>
       {/* <Tab.Screen name="Test" component={Page} /> */}
     </Tab.Navigator>
   );
