@@ -56,7 +56,7 @@ export default function Mapping({followingState}) {
   const [coordinates, setCoordinates] = useState([]);
   const simplifiedCoordinatesRef = useRef([]);
   const [totalDistance, setTotalDistance] = useState(0);
-
+  
   useEffect(() => {
     // Update the simplified coordinates whenever the coordinates change
     simplifiedCoordinatesRef.current = simplify(coordinates, 0.1, true);
