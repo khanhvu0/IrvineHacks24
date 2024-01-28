@@ -1,32 +1,40 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
 import PastActivity from '../components/PastActivity';
 import { Color } from '../GlobalStyles';
 
+  const map1 = require('../images/map_1.jpeg');
+  const map2 = require('../images/map_2.jpeg');
+  const map3 = require('../images/map_3.jpeg');
+
 export default function Home() {
   return (
+    <ScrollView>
     <View style={styles.container}>
       <View style={styles.bluebox}>
         <View style={styles.hello}>
           <View>
-            <Text style={styles.whiteText}>Hello "Name"</Text>
-            <Text style={styles.whiteText}>beginner</Text>
+            <Text style={styles.Hello}>Hello <Text style={styles.Name}>User</Text></Text>
+            <Text style={styles.beginner}>beginner</Text>
           </View>
           <TouchableOpacity>
-            <Text style={styles.whiteText}>Settings Button</Text>
+            <Image
+              source={require('../images/profilepic.jpeg')}
+              style={styles.profileImage}
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.whitebox}>
           <View style={styles.whiteboxrow1}>
             <Text style={styles.weekgoal}>Week Goal: 50km</Text>
             <TouchableOpacity>
-              <Text >Weekly Goals Button</Text>
+              <Text style={styles.whiteText}>Weekly Goals Button</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.whiteboxrow2}>
-            <Text>35km done</Text>
+            <Text style={styles.kmBar}>35km done</Text>
             <TouchableOpacity>
-              <Text >15km left</Text>
+              <Text style={styles.kmBar}>15km left</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -34,25 +42,28 @@ export default function Home() {
 
       <View style={styles.current}>
         <View>
-          <Text style={styles.whiteText}>corrupt Img</Text>
+        <Image
+              source={require('../images/running.png')}
+              style={styles.profileImage}
+            />
         </View>
         <View style={styles.currentInfo}>
-          <Text style={styles.whiteText}>Current Joggin</Text>
-          <Text style={styles.whiteText}>0:03:44</Text>
+          <Text style={styles.currentRun}>Morning Run</Text>
+          <Text style={styles.whiteText}>1:23:44</Text>
         </View>
         <View style={styles.currentInfo}>
-          <Text style={styles.whiteText}>10.9km</Text>
-          <Text style={styles.whiteText}>539kcal</Text>
+          <Text style={styles.currentRunDistance}>10.9km</Text>
+          <Text style={styles.currentRunCal}>539kcal</Text>
         </View>
       </View>
 
       <View style={styles.recent}>
-        <PastActivity />
-        <PastActivity />
-        <PastActivity />
-        <PastActivity />
+        <PastActivity filepath={map1} date='December 19th, 8:59AM' distance={12}/>
+        <PastActivity filepath={map2} date='November 26th, 7:50AM' distance={9}/>
+        <PastActivity filepath={map3} date='November 17th, 8:02AM' distance={8}/>
       </View>
     </View>
+    </ScrollView>
   );
 }
 
@@ -75,7 +86,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '70%',
-    left: 40,
     top: 60,
   },
   whitebox: {
@@ -111,6 +121,7 @@ const styles = StyleSheet.create({
   },
   currentInfo: {
     color: 'white',
+    alignItems: 'center',
   },
   recent: {
     flex: 1,
@@ -120,6 +131,50 @@ const styles = StyleSheet.create({
   },
   whiteText: {
     color: 'white',
+  },
+  Hello: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: '300',
+  },
+  Name: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  beginner: {
+    color: 'white',
+    fontSize: 12,
+    fontWeight: '500',
+  },
+  weekgoal: {
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  kmBar: {
+    color: 'gray',
+    fontSize: 11,
+    fontWeight: '400',
+  },
+  currentRun: {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  currentRunDistance: {
+    color: 'white',
+    fontSize: 11,
+    fontWeight: '700',
+  },
+  currentRunCal: {
+    color: 'white',
+    fontSize: 11,
+    fontWeight: '300',
+  },
+  profileImage: {
+    width: 50, // Set your desired width
+    height: 50, // Set your desired height
+    borderRadius: 25, // Half of the width and height to make it a circle
   },
 });
 
