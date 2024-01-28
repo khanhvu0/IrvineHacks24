@@ -23,6 +23,7 @@
     "expo-sensors": "~12.9.1",
     "expo-status-bar": "~1.11.1",
     "firebase": "^10.7.2",
+    "haversine": "^1.1.1",
     "react": "18.2.0",
     "react-native": "0.73.2",
     "react-native-geolocation-service": "^5.3.1",

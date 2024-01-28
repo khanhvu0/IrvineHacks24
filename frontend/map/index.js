@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import MapView, { PROVIDER_DEFAULT, PROVIDER_GOOGLE, Polyline } from 'react-native-maps';
 import { StyleSheet, TouchableOpacity, View , Text} from 'react-native';
 import simplify from 'simplify-js';
+import haversine from 'haversine';
 
 //import { useNavigation } from 'expo-router';
 
@@ -29,10 +30,24 @@ const addCoordinateIfFarEnough = (newCoordinate, path, minDistanceThreshold) => 
   }
 };
 
+const calculateDistanceFromStart = (coordinates) => {
+  if (coordinates.length < 2) {
+    // Not enough coordinates to calculate distance
+    return 0;
+  }
+
+  const startCoordinate = coordinates[coordinates.length - 2];
+  const endCoordinate = coordinates[coordinates.length - 1];
+  const distance = haversine(startCoordinate, endCoordinate);
+
+  return distance;
+};
+
 
 export default function Mapping({followingState}) {
   const mapRef = useRef(null);
   const minDistanceThreshold = 0.00001;
+  const minAddingDistance = 0.1; //Distance in miles
   
   // const onRegionChange = (region) => {
 	// 	console.log(region);
@@ -40,6 +55,7 @@ export default function Mapping({followingState}) {
 
   const [coordinates, setCoordinates] = useState([]);
   const simplifiedCoordinatesRef = useRef([]);
+  const [totalDistance, setTotalDistance] = useState(0);
 
   useEffect(() => {
     // Update the simplified coordinates whenever the coordinates change
@@ -51,8 +67,16 @@ export default function Mapping({followingState}) {
     setTimeout(() => {
       const newPath = addCoordinateIfFarEnough(newCoordinate, coordinates, minDistanceThreshold);
       setCoordinates(newPath);
-    }, 5000);
-    //console.log(coordinates);
+      
+      const distanceFromStart = calculateDistanceFromStart(newPath);
+      setTotalDistance(totalDistance + distanceFromStart);
+      console.log("Distance from start: ", totalDistance); 
+      //setCalories(totalDistance * 57.9);
+    }, 5000);  
+  
+    //multiply total distance at the moment by 57.9 to get calories burned (avg weight 138 lbs)
+    //pace = distance/time every 20 seconds    
+
   };
 
 
