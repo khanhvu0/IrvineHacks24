@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Pedometer } from 'expo-sensors';
 
-import { ref, set } from 'firebase/database';
+import { ref, set, update } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
 import { FIREBASE_AUTH, FIREBASE_DB } from '../FirebaseConfig';
 import LeaderboardComp from '../components/LeaderboardComp';
@@ -108,8 +108,7 @@ export default function Profile() {
         setSixStepCount(StepCountResult6.steps);
       }
 
-      setWeeklyStepCount(pastStepCount + currentStepCount + yesterdayStepCount + twoStepCount +
-        threeStepCount + fourStepCount + fiveStepCount + sixStepCount);
+      setWeeklyStepCount(pastStepCountResult.steps + StepCountResult2.steps + StepCountResult3.steps + StepCountResult4.steps + StepCountResult5.steps + StepCountResult6.steps);
 
       return Pedometer.watchStepCount(result => {
         setCurrentStepCount(result.steps);
@@ -119,11 +118,11 @@ export default function Profile() {
           const userId = user.uid;
 
           // Update the database with the current step count
-          set(ref(FIREBASE_DB, `dailySteps/` + userId), {
+          update(ref(FIREBASE_DB, `dailySteps/` + userId), {
             name: user.displayName,
             email: user.email,
-            steps: result.steps,
-            weeklySteps: weeklyStepCount,
+            steps: result.steps + pastStepCountResult.steps,
+            weeklySteps: result.steps + yesterdayStepCountResult.steps + pastStepCountResult.steps + StepCountResult2.steps + StepCountResult3.steps + StepCountResult4.steps + StepCountResult5.steps + StepCountResult6.steps,
           });
           console.log(userId + result.steps);
         }
