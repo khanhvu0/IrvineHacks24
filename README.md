@@ -9,6 +9,9 @@ Navigation:
 5. $npm install @react-navigation/bottom-tabs
 6. $npx expo install expo-sensors
 
+Home:
+1. $npm install react-native-svg
+
 To run simulator: 
 1. $cd frontend
 2. run $npx expo start

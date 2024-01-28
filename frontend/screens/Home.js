@@ -1,16 +1,80 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { Svg, Circle, Text as SvgText } from 'react-native-svg';
 import PastActivity from '../components/PastActivity';
 import { Color } from '../GlobalStyles';
+import { FIREBASE_AUTH, FIREBASE_DB } from '../FirebaseConfig';
+import { onValue, ref } from 'firebase/database';
 
   const map1 = require('../images/map_1.jpeg');
   const map2 = require('../images/map_2.jpeg');
   const map3 = require('../images/map_3.jpeg');
 
+  const CircularProgressBar = ({ dailySteps, goalSteps }) => {
+    const strokeWidth = 10;
+    const radius = 80;
+    const circumference = 2 * Math.PI * radius;
+  
+    const progress = (dailySteps / goalSteps) * 100;
+    const progressValue = Math.min(progress, 100); // Ensure the value is between 0 and 100
+  
+    const strokeDasharray = `${circumference} ${circumference}`;
+    const strokeDashoffset = circumference - (progressValue / 100) * circumference;
+  
+    return (
+      <View style={styles.container}>
+        <Svg height="200" width="200">
+          <Circle
+            cx="100"
+            cy="100"
+            r={radius}
+            stroke="#e0e0e0"
+            strokeWidth={strokeWidth}
+            fill="transparent"
+          />
+          <Circle
+            cx="100"
+            cy="100"
+            r={radius}
+            stroke="#00cc00" // Green color for the progress
+            strokeWidth={strokeWidth}
+            fill="transparent"
+            strokeDasharray={strokeDasharray}
+            strokeDashoffset={strokeDashoffset}
+          />
+          <SvgText x="50%" y="50%" textAnchor="middle" stroke="#000" fontSize="20" fontWeight="bold">
+            {`${dailySteps}/${goalSteps}`}
+          </SvgText>
+        </Svg>
+      </View>
+    );
+  };
+
+
 export default function Home() {
+  const [dailySteps, setDailySteps] = useState(0);
+
+  useEffect(() => {
+    // Fetch the user's daily steps from Firebase
+    const user = FIREBASE_AUTH.currentUser;
+    if (user) {
+      const userId = user.uid;
+      const dailyStepsRef = ref(FIREBASE_DB, `dailySteps/${userId}`);
+      
+      // Listen for changes in the database
+      onValue(dailyStepsRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          setDailySteps(data.dailySteps || 0);
+        }
+      });
+    }
+  }, []);
+
   return (
     <ScrollView>
     <View style={styles.container}>
+      <CircularProgressBar dailySteps={dailySteps} goalSteps={20000} />
       <View style={styles.bluebox}>
         <View style={styles.hello}>
           <View>
