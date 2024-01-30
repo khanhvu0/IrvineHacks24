@@ -18,7 +18,7 @@ export default function PastActivity({ filepath, date, distance }) {
           <Text style={styles.data}>701kcal 11.2km/hr</Text>
         </View>
         <TouchableOpacity>
-          <Text style={styles.button}></Text>
+          <Text style={styles.button}>{'>'}</Text>
         </TouchableOpacity>
       </View>
 
@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
   },
   button: {
     fontSize: 20,
-    fontWeight: '200',
+    fontWeight: '800',
+    color: 'gray',
   },
   image: {
     width: 50, // Set your desired width

@@ -16,7 +16,7 @@ export default function Profile({ filepath, title }) {
           <Text style={styles.title}>{title}</Text>
         </View>
         <TouchableOpacity>
-          <Text style={styles.button}></Text>
+          <Text style={styles.button}>{'>'}</Text>
         </TouchableOpacity>
       </View>
 
