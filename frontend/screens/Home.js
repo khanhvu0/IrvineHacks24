@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Color.blue,
     width: '100%',
-    height: 250,
+    height: 150,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },
@@ -240,11 +240,11 @@ const styles = StyleSheet.create({
     borderRadius: 35, // Half of the width and height to make it a circle
   },
   progress: {
-    transform: [{ translateY: 200 }],
+    transform: [{ translateY: 85 }],
   },
   progressText: {
     color: 'black',
-    transform: [{ translateY: 200 }],
+    transform: [{ translateY: 90 }],
     fontSize:  30,
     fontWeight: '800',
   }
